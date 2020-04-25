@@ -12,9 +12,15 @@ const Formulario = () => {
   });
 
   // Capturar los valores ingresados por el usuario (en cada cambio)
-  const actualizarState = () => {
-    console.log('onChange :D');
+  const actualizarState = e => {
+    setCita({
+      ...cita,
+      [e.target.name]: e.target.value
+    });
   };
+
+  // Extraer los valores
+  const { mascota, propietario, fecha, hora, sintomas } = cita;
 
   return (
     <Fragment>
@@ -27,6 +33,7 @@ const Formulario = () => {
           className="u-full-width"
           placeholder="Nombre de la mascota"
           onChange={actualizarState}
+          value={mascota}
         />
         <label>Nombre dueño</label>
         <input
@@ -35,6 +42,7 @@ const Formulario = () => {
           className="u-full-width"
           placeholder="Nombre del propietario"
           onChange={actualizarState}
+          value={propietario}
         />
         <label>Fecha</label>
         <input
@@ -42,6 +50,7 @@ const Formulario = () => {
           name="fecha"
           className="u-full-width"
           onChange={actualizarState}
+          value={fecha}
         />
         <label>Hora</label>
         <input
@@ -49,12 +58,14 @@ const Formulario = () => {
           name="hora"
           className="u-full-width"
           onChange={actualizarState}
+          value={hora}
         />
         <label>Síntomas</label>
         <textarea
           className="u-full-width"
           name="sintomas"
           onChange={actualizarState}
+          value={sintomas}
         />
         <input
           type="submit"
