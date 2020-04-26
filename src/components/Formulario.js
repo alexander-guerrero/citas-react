@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+// const { v4: uuidv4 } = require('uuid'); // Tambien funciona la sintaxis de Object Destructuring
 
 const Formulario = () => {
 
@@ -33,8 +35,13 @@ const Formulario = () => {
       setError(true);
       return;
     }
-    
+
+    // Ocultar el mensaje de error previo (en caso exista)
+    setError(false);
+
     // Asignar un ID
+    cita.id = uuidv4();
+    console.log(cita);
 
     // Crear la cita
 
