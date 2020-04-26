@@ -11,6 +11,9 @@ const Formulario = () => {
     sintomas: ''
   });
 
+  // Crear State de validación
+  const [error, setError] = useState(false);
+
   // Capturar los valores ingresados por el usuario (en cada cambio)
   const actualizarState = e => {
     setCita({
@@ -26,7 +29,11 @@ const Formulario = () => {
   const enviarCita = e => {
     e.preventDefault();
     // Validar
-
+    if (mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || sintomas.trim() === '') {
+      setError(true);
+      return;
+    }
+    
     // Asignar un ID
 
     // Crear la cita
@@ -37,6 +44,13 @@ const Formulario = () => {
   return (
     <Fragment>
       <h2>Crear Cita</h2>
+
+      {error
+        ?
+        <p className="alerta-error">Todos los campos son obligatorios</p>
+        :
+        null}
+
       <form
         onSubmit={enviarCita}
       >
