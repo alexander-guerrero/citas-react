@@ -2,9 +2,9 @@ import React, { Fragment, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // const { v4: uuidv4 } = require('uuid'); // Tambien funciona la sintaxis de Object Destructuring
 
-const Formulario = () => {
+const Formulario = ({ guardarCita }) => {
 
-  // Crear State de Citas
+  // Crear State de Cita (Object)
   const [cita, setCita] = useState({
     mascota: '',
     propietario: '',
@@ -29,7 +29,9 @@ const Formulario = () => {
 
   // Al hacer click en "Agregar cita" (envío del formulario)
   const enviarCita = e => {
+
     e.preventDefault();
+
     // Validar
     if (mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || sintomas.trim() === '') {
       setError(true);
@@ -41,9 +43,9 @@ const Formulario = () => {
 
     // Asignar un ID
     cita.id = uuidv4();
-    console.log(cita);
 
     // Crear la cita
+    guardarCita(cita);
 
     // Reiniciar el form
   };
