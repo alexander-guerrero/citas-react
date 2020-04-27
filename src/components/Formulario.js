@@ -47,7 +47,14 @@ const Formulario = ({ guardarCita }) => {
     // Crear la cita
     guardarCita(cita);
 
-    // Reiniciar el form
+    // Reiniciar el formulario
+    setCita({
+      mascota: '',
+      propietario: '',
+      fecha: '',
+      hora: '',
+      sintomas: ''
+    });
   };
 
   return (
