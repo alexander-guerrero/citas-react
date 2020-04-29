@@ -15,6 +15,13 @@ function App() {
     ]);
   };
 
+  // Eliminar Cita del State de Citas
+  const eliminarCita = cita => {
+    const citasTmp = citas.filter(c => c.id !== cita.id);
+    setCitas(citasTmp);
+  };
+
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -31,6 +38,7 @@ function App() {
               <Cita
                 key={cita.id}
                 cita={cita}
+                eliminarCita={eliminarCita}
               />
             ))}
           </div>
