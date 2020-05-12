@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
@@ -6,6 +6,13 @@ function App() {
 
   // Crear State de Citas (Array)
   const [citas, setCitas] = useState([]);
+
+  // Se ejecuta inmediatamente después de que se monta la componente (primer renderizado)
+  // Se ejecuta posteriormente después de cada actualización de la componente
+  // Equivale a componentDidMount() y componentDidUpdate() de un Class Component
+  useEffect(() => {
+    console.log('Listo o Actualizado :D');
+  }, [citas]);
 
   // Guardar Cita en el State de Citas
   const guardarCita = cita => {
