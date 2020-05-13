@@ -4,14 +4,20 @@ import Cita from './components/Cita';
 
 function App() {
 
+  // Citas en localStorage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if (!citasIniciales) {
+    citasIniciales = [];
+  }
+
   // Crear State de Citas (Array)
-  const [citas, setCitas] = useState([]);
+  const [citas, setCitas] = useState(citasIniciales);
 
   // Se ejecuta inmediatamente después de que se monta la componente (primer renderizado)
   // Se ejecuta posteriormente después de cada actualización de la componente
   // Equivale a componentDidMount() y componentDidUpdate() de un Class Component
   useEffect(() => {
-    console.log('Listo o Actualizado :D');
+    localStorage.setItem('citas', JSON.stringify(citas));
   }, [citas]);
 
   // Guardar Cita en el State de Citas
