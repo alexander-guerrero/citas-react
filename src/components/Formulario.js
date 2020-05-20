@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // const { v4: uuidv4 } = require('uuid'); // Tambien funciona la sintaxis de Object Destructuring
+import PropTypes from 'prop-types';
 
 const Formulario = ({ guardarCita }) => {
 
@@ -120,5 +121,9 @@ const Formulario = ({ guardarCita }) => {
     </Fragment>
   );
 }
+
+Formulario.propTypes = {
+  guardarCita: PropTypes.func.isRequired
+};
 
 export default Formulario;
